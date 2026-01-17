@@ -482,10 +482,10 @@ Security → Roles → ml_full_access → Mapped user → Manage mapping
 
 ```
 OPENSEARCH_URL=
-OPENSEARCH_INDEX=
 OPENSEARCH_MODEL=
-OPENSEARCH_USERNAME=
-OPENSEARCH_PASSWORD=
+OPENSEARCH_INDEX=aozora_vector
+OPENSEARCH_USERNAME=aozoramaster
+OPENSEARCH_PASSWORD="Bluesky123#"
 ```
 
 Nodeモジュールのインストール
