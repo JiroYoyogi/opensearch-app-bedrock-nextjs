@@ -6,9 +6,10 @@ type SearchRequest = Parameters<InstanceType<typeof Client>["search"]>[0];
 const OPENSEARCH_URL = process.env.OPENSEARCH_URL || "";
 const OPENSEARCH_INDEX = process.env.OPENSEARCH_INDEX || "";
 const OPENSEARCH_MODEL = process.env.OPENSEARCH_MODEL || "";
-const OPENSEARCH_SEARCH_PIPELINE = process.env.OPENSEARCH_SEARCH_PIPELINE || "";
 const USERNAME = process.env.OPENSEARCH_USERNAME || "";
 const PASSWORD = process.env.OPENSEARCH_PASSWORD || "";
+
+const OPENSEARCH_SEARCH_PIPELINE = "";
 
 // OpenSearchクライアント
 const osClient = new Client({
@@ -54,7 +55,7 @@ export async function searchAozora(
     body: getSearchBody(userText, searchType),
   };
 
-  if (searchType === "hybrid") {
+  if (searchType === "hybrid" && OPENSEARCH_SEARCH_PIPELINE) {
     searchParams.search_pipeline = OPENSEARCH_SEARCH_PIPELINE;
   }
 
