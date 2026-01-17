@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+:root {
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-foreground: var(--foreground);
+  --background-hero: url("/bg-sky.jpg");
+  --font-sans: var(--font-noto-sans);
+}
+
+body {
+  color: var(--foreground);
+  background: white var(--background-hero) top center / cover no-repeat fixed;
+}
