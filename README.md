@@ -135,8 +135,6 @@ CloudShellで下記を実行。ログイン方法によって異なる
 aws sts get-caller-identity --query Arn --output text
 ```
 
-↓
-
 ```
 # ルートユーザーの場合
 arn:aws:iam::1234567890:root
@@ -156,19 +154,18 @@ ROLE_NAME=$(aws sts get-caller-identity --query Arn --output text | cut -d'/' -f
 aws iam get-role --role-name $ROLE_NAME --query 'Role.Arn' --output text
 ```
 
-↓
 ```
 # SSOの場合
 arn:aws:iam::1234567890:role/aws-reserved/sso.amazonaws.com/ap-northeast-1/AWSReservedSSO_AdministratorAccess_abcd1234
 ```
 
-- ml_full_accessに上記ARNをセット
+- ml_full_accessに上記Arnをセット
 
 ```
 Security → Roles → ml_full_access → Mapped user → Manage mapping
 ```
 
-もし、上記のみの設定でコネクター作成に失敗するならば下記にも、、、
+上記の設定でコネクター作成に失敗するならば下記にもArnをセット
 
 ```
 Security → Roles → all_access → Mapped user → Manage mapping
