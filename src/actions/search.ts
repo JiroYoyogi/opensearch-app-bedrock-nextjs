@@ -95,7 +95,7 @@ function getSearchBody(userText: string, searchType: SearchType) {
   switch (searchType) {
     case "lexical":
       return {
-        size: 5,
+        size: 10,
         query: {
           // match ... title だけ summary だけから探す
           // multi_match ... title と summary から探す
@@ -112,20 +112,20 @@ function getSearchBody(userText: string, searchType: SearchType) {
       };
     case "vector":
       return {
-        size: 5,
+        size: 10,
         query: {
           neural: {
             summary_vector: {
               query_text: userText,
               model_id: OPENSEARCH_MODEL,
-              k: 10, // 各保存場所から近いものをk個取得。マージして更にk個に絞る
+              k: 20, // 各保存場所から近いものをk個取得。マージして更にk個に絞る
             },
           },
         },
       };
     case "hybrid":
       return {
-        size: 5,
+        size: 10,
         _source: ["title", "summary", "author"],
         query: {
           hybrid: {
