@@ -4,9 +4,9 @@
 - Bedrockとのコネクタを作成
 - コネクタを使うモデルを作成（登録）
 - インデックスを作成
-- ダッシュボード上でベクトル検索
-- AWSがコネクタ・モデルを作るCFテンプレートを使ってみる
-- Next.jsのアプリでベクトル検索
+- クトル検索（ダッシュボード）
+- CFテンプレートでコネクタ・モデルを作成
+- Next.jsからベクトル検索
 - OpenSearchのドメインを削除
 
 ## OpenSearchのドメインを作成
@@ -135,7 +135,7 @@ CloudShellで下記を実行。ログイン方法によって異なる
 aws sts get-caller-identity --query Arn --output text
 ```
 
-IAMロールのARNが表示される
+↓
 
 ```
 # ルートユーザーの場合
@@ -156,14 +156,13 @@ ROLE_NAME=$(aws sts get-caller-identity --query Arn --output text | cut -d'/' -f
 aws iam get-role --role-name $ROLE_NAME --query 'Role.Arn' --output text
 ```
 
-IAMロールのARNが表示される
-
+↓
 ```
-例：
+# SSOの場合
 arn:aws:iam::1234567890:role/aws-reserved/sso.amazonaws.com/ap-northeast-1/AWSReservedSSO_AdministratorAccess_abcd1234
 ```
 
-ml_full_accessに上記ARNをセット
+- ml_full_accessに上記ARNをセット
 
 ```
 Security → Roles → ml_full_access → Mapped user → Manage mapping
@@ -368,7 +367,7 @@ PUT /aozora_vector
 - mappings.properties.summary
 - mappings.properties.author
 
-## ダッシュボード上でベクトル検索
+## ベクトル検索（ダッシュボード）
 
 ### データ保存
 
