@@ -105,9 +105,9 @@ export default function Home() {
         <div>
           <p>{results.length}件の作品が見つかりました。</p>
           <ul>
-            {results.map((res) => (
+            {results.map((res, key) => (
               <li
-                key={res.id}
+                key={key}
                 className="p-6 border rounded-xl shadow-sm bg-white mt-4 relative"
               >
                 <div className="absolute top-4 right-4 bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-md border">
