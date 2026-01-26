@@ -535,7 +535,7 @@ npm run dev
 
 ### ハイブリッド検索の検索結果を調整
 
-レキシカル検索の一致が優先されがち問題
+レキシカル検索の一致が優先されがち・重複がある問題の対策
 
 ```
 PUT /_search/pipeline/hybrid-search-pipeline
@@ -551,6 +551,13 @@ PUT /_search/pipeline/hybrid-search-pipeline
   ]
 }
 ```
+
+- normalization
+  - 異なる検索方式（BM25 / ベクトル検索）のスコアを同じ尺度に揃える
+- combination
+  - 正規化したスコアを合成し、ハイブリッド検索の最終スコアを算出
+
+※ 重複問題も↑の設定でスコア計算・統合が正しくされれば直ります。
 
 ## ベクトルキャッシュをどのようにするか
 
